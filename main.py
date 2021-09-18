@@ -13,10 +13,16 @@ main = Blueprint('main', __name__)
 def index():
     return render_template('index.html')
 
+@main.route('/eldar') # home page that return 'index'
+@login_required
+def eldar():
+    return render_template('eldar.html')
+
 @main.route('/profile') # profile page that return 'profile'
 @login_required
 def profile():
     return render_template('profile.html', name=current_user.name)
+
 
 app = create_app() # we initialize our flask app using the __init__.py function
 if __name__ == '__main__':
